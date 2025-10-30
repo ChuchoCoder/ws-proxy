@@ -1,0 +1,20 @@
+{
+  "name": "ws-proxy",
+  "version": "1.0.0",
+  "description": "WebSocket proxy to inject X-Auth-Token header for pyRofex broker connections",
+  "main": "proxy.js",
+  "scripts": {
+    "start": "node proxy.js",
+    "test:integration": "node tests/integration-test.js",
+    "test:broker": "node tests/direct-broker-test.js"
+  },
+  "keywords": ["websocket", "proxy", "rofex", "broker"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "axios": "^1.6.0"
+  }
+}
