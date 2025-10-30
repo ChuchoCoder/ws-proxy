@@ -161,8 +161,8 @@ function startProxyServer() {
   return new Promise((resolve, reject) => {
     console.log('[STEP 3] Starting WebSocket proxy server...');
     
-    // Launch proxy.js as a child process
-    proxyProcess = spawn('node', ['proxy.js'], {
+    // Launch src/proxy.js as a child process
+    proxyProcess = spawn('node', ['src/proxy.js'], {
       cwd: path.join(__dirname, '..'),
       env: { ...process.env, PORT: PROXY_PORT }
     });
