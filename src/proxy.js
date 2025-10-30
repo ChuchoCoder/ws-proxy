@@ -9,7 +9,6 @@
 
 const WebSocket = require('ws');
 const http = require('http');
-const url = require('url');
 
 // Configuration
 const PORT = process.env.PORT || 8080;
@@ -47,8 +46,9 @@ const wss = new WebSocket.Server({ noServer: true });
 
 // Handle WebSocket upgrade
 server.on('upgrade', (request, socket, head) => {
-  const parsedUrl = url.parse(request.url, true);
-  const { token, server: upstreamServer } = parsedUrl.query;
+  const parsedUrl = new URL(request.url, `http://${request.headers.host}`);
+  const token = parsedUrl.searchParams.get('token');
+  const upstreamServer = parsedUrl.searchParams.get('server');
   const origin = request.headers.origin;
   
   log('info', 'Incoming connection request', {
