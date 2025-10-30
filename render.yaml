@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: ws-proxy
+    runtime: node
+    region: virginia  # Change to your preferred region (oregon, frankfurt, singapore)
+    plan: starter   # starter, standard, pro, pro plus, pro max, pro ultra
+    buildCommand: npm install --production
+    startCommand: npm start
+    healthCheckPath: /health
+    domains:
+      - ws-proxy.onrender.com  # Replace with your desired subdomain
+    envVars:
+      - key: PORT
+        value: 10000  # Render assigns this automatically
+      - key: LOG_LEVEL
+        value: info
+      - key: REJECT_UNAUTHORIZED
+        value: "true"
+      - key: ALLOWED_ORIGINS
+        value: "https://chuchocoder.github.io,http://localhost:5173,http://localhost:5174,http://localhost:5175"  # Set specific origins in production for security
+    # Render automatically sets NODE_ENV=production
+    
+    # Auto-deploy settings
+    autoDeploy: true  # Auto-deploy on git push to main branch

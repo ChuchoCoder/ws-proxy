@@ -278,3 +278,25 @@ LOG_LEVEL=debug npm start
 ## License
 
 MIT
+
+## Deployment
+
+### Deploy to Render.com
+
+This application is ready for deployment to Render.com. See the detailed deployment guide:
+
+📖 **[DEPLOYMENT.md](./DEPLOYMENT.md)** - Complete deployment instructions
+📋 **[ENVIRONMENT.md](./ENVIRONMENT.md)** - Environment variables guide
+
+**Quick Deploy:**
+1. Connect your GitHub repository to Render.com
+2. The `render.yaml` file will automatically configure your service
+3. Set environment variables (see ENVIRONMENT.md)
+4. Deploy!
+
+Your service will be available at: `wss://your-service-name.onrender.com`
+
+**Example usage with deployed service:**
+```javascript
+const ws = new WebSocket('wss://your-service-name.onrender.com?token=YOUR_TOKEN&server=wss://api.remarkets.primary.com.ar/');
+```
